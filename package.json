@@ -1,10 +1,10 @@
 {
   "name": "audit-check",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "audit": "node bin/index.js --severity low --ignore-dev"
   },
   "repository": {
     "type": "git",
@@ -13,8 +13,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "cli-table": "0.3.1",
+    "colors": "1.4.0",
+    "commander": "5.0.0",
+    "lodash": "4.17.15"
+  },
   "bugs": {
     "url": "https://github.com/lee5i3/audit-check/issues"
   },
-  "homepage": "https://github.com/lee5i3/audit-check#readme"
+  "homepage": "https://github.com/lee5i3/audit-check#readme",
+  "bin": {
+    "audit-check": "./bin/index.js"
+  }
 }
