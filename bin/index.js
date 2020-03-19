@@ -36,7 +36,7 @@ child.on('close', (code) => {
     process.exit(4)
   }
 
-  let audit = new Audit(cmd.severity, cmd.ignoreDev);
+  let audit = new Audit(cmd.severity, cmd.ignoreDev, cmd.whitelist);
 
   audit.load(stdout);
 
