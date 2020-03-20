@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc ./node_modules/mocha/bin/mocha",
-    "audit": "node bin/index.js --severity low --ignore-dev"
+    "test": "nyc ./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
