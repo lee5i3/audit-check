@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "nyc ./node_modules/mocha/bin/mocha",
     "audit": "node bin/index.js --severity low --ignore-dev"
   },
   "repository": {
@@ -25,5 +26,9 @@
   "homepage": "https://github.com/lee5i3/audit-check#readme",
   "bin": {
     "audit-check": "./bin/index.js"
+  },
+  "devDependencies": {
+    "mocha": "7.1.1",
+    "nyc": "15.0.0"
   }
 }
