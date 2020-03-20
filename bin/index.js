@@ -33,7 +33,7 @@ child.on('close', (code) => {
 
   if (stderr.length > 0) {
     console.error(stderr)
-    process.exit(4)
+    process.exit(1)
   }
 
   let audit = new Audit(cmd.severity, cmd.ignoreDev, cmd.whitelist);
