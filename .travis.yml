@@ -9,6 +9,7 @@ jobs:
       name: "Unit Tests"
       script:
         - npm test
+        - bash <(curl -s https://codecov.io/bash)
     - script:
         - echo "other"
     - stage: deploy  
