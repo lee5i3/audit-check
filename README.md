@@ -12,7 +12,7 @@ npm install -g audit-check
 ```
 
 ### Common Configuration Options
-| Option | Description  | Type | Default  |
+| Command Options | Description  | Type | Default  |
 |---|---|---|---|
 | ```severity``` | Name of the severity to ignore, this will filter that from the result and return the correct exit code | ```String```  | ```info```  |
 | ```json``` | Weither to return a JSON or Table | ```Boolean```  | ```false```  |
