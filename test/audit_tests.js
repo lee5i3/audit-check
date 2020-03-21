@@ -64,7 +64,7 @@ describe('Audit Tests', function () {
         args: { file: 'no-critical.json', severity: 'critical', json: true },
         expected: { code: 0, metadata: { info: 0, low: 0, moderate: 0, high: 0, critical: 0 } }
       }
-    ]
+    ];
 
     _.forEach(testCases, (test) => {
       describe(`${test.args.file} - ${test.args.severity} ${test.args.whitelist ? test.args.whitelist : ''}`, function () {
@@ -72,8 +72,8 @@ describe('Audit Tests', function () {
           this.audit = new Audit(test.args.severity, test.args.json, test.args.whitelist);
 
           let data = fs.readFileSync(__dirname + '/data/' + test.args.file);
-          this.audit.load(data)
-        })
+          this.audit.load(data);
+        });
 
         it('getCode() should return ' + test.expected.code, () => {
           assert.equal(this.audit.getCode(), test.expected.code);
@@ -81,17 +81,16 @@ describe('Audit Tests', function () {
 
         if (test.args.json) {
           it('get() should have correct metadata', () => {
-            let data = JSON.parse(this.audit.get());
+            const data = JSON.parse(this.audit.get());
 
             assert.equal(data.metadata.info, test.expected.metadata.info);
             assert.equal(data.metadata.low, test.expected.metadata.low);
             assert.equal(data.metadata.moderate, test.expected.metadata.moderate);
             assert.equal(data.metadata.high, test.expected.metadata.high);
             assert.equal(data.metadata.critical, test.expected.metadata.critical);
-          })
+          });
         }
-
-      })
+      });
     });
-  })
+  });
 });

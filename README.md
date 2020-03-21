@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/lee5i3/audit-check/branch/master/graph/badge.svg)](https://codecov.io/gh/lee5i3/audit-check)
 [![Known Vulnerabilities](https://snyk.io/test/github/lee5i3/audit-check/badge.svg)](https://snyk.io/test/github/lee5i3/audit-check)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lee5i3_audit-check&metric=alert_status)](https://sonarcloud.io/dashboard?id=lee5i3_audit-check)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f91b80021c6d4f0cb4f1dda56f580273)](https://www.codacy.com/manual/lee5i3/audit-check?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lee5i3/audit-check&amp;utm_campaign=Badge_Grade)
 
 ### Install
 ```
