@@ -1,10 +1,11 @@
 {
   "name": "audit-check",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "audit": "node bin/index.js --severity low --ignore-dev"
+    "test": "nyc --reporter=lcov ./node_modules/mocha/bin/mocha",
+    "coverage": "codecov"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,10 @@
   "homepage": "https://github.com/lee5i3/audit-check#readme",
   "bin": {
     "audit-check": "./bin/index.js"
+  },
+  "devDependencies": {
+    "codecov": "3.6.5",
+    "mocha": "7.1.1",
+    "nyc": "15.0.0"
   }
 }

@@ -1,0 +1,138 @@
+{
+  "actions": [],
+  "advisories": {
+    "39": {
+      "findings": [
+        {
+          "version": "2.3.6",
+          "paths": [
+            "hbs>handlebars>uglify-js"
+          ]
+        }
+      ],
+      "id": 39,
+      "created": "2015-10-17T19:41:46.382Z",
+      "updated": "2019-06-14T23:28:21.694Z",
+      "deleted": null,
+      "title": "Incorrect Handling of Non-Boolean Comparisons During Minification",
+      "found_by": {
+        "name": "Tom MacWright"
+      },
+      "reported_by": {
+        "name": "Tom MacWright"
+      },
+      "module_name": "debug",
+      "cves": [
+        "CVE-2015-8857"
+      ],
+      "vulnerable_versions": "<= 2.4.23",
+      "patched_versions": ">= 2.4.24",
+      "overview": "Versions of `uglify-js` prior to 2.4.24 are affected by a vulnerability which may cause crafted JavaScript to have altered functionality after minification.\n\n",
+      "recommendation": "Upgrade UglifyJS to version >= 2.4.24.",
+      "references": "- [Backdooring JS - Yan Zhu(@bcrypt)](https://zyan.scripts.mit.edu/blog/backdooring-js/)\n- [Issue #751](https://github.com/mishoo/UglifyJS2/issues/751)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-95",
+      "metadata": {
+        "module_type": "Multi.Compiler",
+        "exploitability": 2,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/39"
+    },
+    "40": {
+      "findings": [
+        {
+          "version": "2.3.6",
+          "paths": [
+            "hbs>handlebars>uglify-js"
+          ]
+        }
+      ],
+      "id": 39,
+      "created": "2015-10-17T19:41:46.382Z",
+      "updated": "2019-06-14T23:28:21.694Z",
+      "deleted": null,
+      "title": "Incorrect Handling of Non-Boolean Comparisons During Minification",
+      "found_by": {
+        "name": "Tom MacWright"
+      },
+      "reported_by": {
+        "name": "Tom MacWright"
+      },
+      "module_name": "ms",
+      "cves": [
+        "CVE-2015-8857"
+      ],
+      "vulnerable_versions": "<= 2.4.23",
+      "patched_versions": ">= 2.4.24",
+      "overview": "Versions of `uglify-js` prior to 2.4.24 are affected by a vulnerability which may cause crafted JavaScript to have altered functionality after minification.\n\n",
+      "recommendation": "Upgrade UglifyJS to version >= 2.4.24.",
+      "references": "- [Backdooring JS - Yan Zhu(@bcrypt)](https://zyan.scripts.mit.edu/blog/backdooring-js/)\n- [Issue #751](https://github.com/mishoo/UglifyJS2/issues/751)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-95",
+      "metadata": {
+        "module_type": "Multi.Compiler",
+        "exploitability": 2,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/39"
+    },
+    "41": {
+      "findings": [
+        {
+          "version": "2.3.6",
+          "paths": [
+            "hbs>handlebars>uglify-js"
+          ]
+        }
+      ],
+      "id": 39,
+      "created": "2015-10-17T19:41:46.382Z",
+      "updated": "2019-06-14T23:28:21.694Z",
+      "deleted": null,
+      "title": "Incorrect Handling of Non-Boolean Comparisons During Minification",
+      "found_by": {
+        "name": "Tom MacWright"
+      },
+      "reported_by": {
+        "name": "Tom MacWright"
+      },
+      "module_name": "uglify-js",
+      "cves": [
+        "CVE-2015-8857"
+      ],
+      "vulnerable_versions": "<= 2.4.23",
+      "patched_versions": ">= 2.4.24",
+      "overview": "Versions of `uglify-js` prior to 2.4.24 are affected by a vulnerability which may cause crafted JavaScript to have altered functionality after minification.\n\n",
+      "recommendation": "Upgrade UglifyJS to version >= 2.4.24.",
+      "references": "- [Backdooring JS - Yan Zhu(@bcrypt)](https://zyan.scripts.mit.edu/blog/backdooring-js/)\n- [Issue #751](https://github.com/mishoo/UglifyJS2/issues/751)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-95",
+      "metadata": {
+        "module_type": "Multi.Compiler",
+        "exploitability": 2,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/39"
+    }
+
+  },
+  "muted": [],
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 3,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 848,
+    "devDependencies": 0,
+    "optionalDependencies": 6,
+    "totalDependencies": 854
+  },
+  "runId": "8f2606ed-6b63-4b22-9b31-36e752772cba"
+}
