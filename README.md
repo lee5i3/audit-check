@@ -12,9 +12,9 @@ npm install -g audit-check
 ```
 
 ### Common Configuration Options
-| Command Options | Description  | Type | Default  |
+| Options | Description  | Type | Default  |
 |---|---|---|---|
-| ```severity``` | Name of the severity to ignore, this will filter that from the result and return the correct exit code | ```String```  | ```info```  |
+| ```severity``` | Severity to ignore, will filter from the result and return the correct exit code | ```String```  | ```info```  |
 | ```json``` | Weither to return a JSON or Table | ```Boolean```  | ```false```  |
 | ```ignore-dev``` | Weither to ignore dev-dependencies  | ```Boolean```  | ```false``` |
 | ```whitelist``` | List of module names to ignore, comma-separated | ```String``` | |
