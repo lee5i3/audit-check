@@ -50,6 +50,30 @@ describe('Audit Tests', function () {
     })
   });
 
+  describe('Single-Low --json --severity low --whitelist', function () {
+    before(() => {
+      this.audit = new Audit('low', true, "uglify-js");
+
+      let data = fs.readFileSync(__dirname + '/data/single-low.json');
+      this.audit.load(data)
+    })
+
+    it('getCode() should return 0', () => {
+      assert.equal(this.audit.getCode(), 0);
+    });
+
+    it('get() should have 1 low', () => {
+      let data = JSON.parse(this.audit.get());
+
+      assert.equal(data.metadata.info, 0);
+      assert.equal(data.metadata.low, 0);
+      assert.equal(data.metadata.moderate, 0);
+      assert.equal(data.metadata.high, 0);
+      assert.equal(data.metadata.critical, 0);
+    })
+  });
+
+
   describe('Single-Low --severity low', function () {
     before(() => {
       this.audit = new Audit('low', false, "");
@@ -95,6 +119,29 @@ describe('Audit Tests', function () {
 
       assert.equal(data.metadata.info, 0);
       assert.equal(data.metadata.low, 3);
+      assert.equal(data.metadata.moderate, 0);
+      assert.equal(data.metadata.high, 0);
+      assert.equal(data.metadata.critical, 0);
+    })
+  });
+
+  describe('Many-Low --json --severity low --whitelist', function () {
+    before(() => {
+      this.audit = new Audit('low', true, "debug");
+
+      let data = fs.readFileSync(__dirname + '/data/many-low.json');
+      this.audit.load(data)
+    })
+
+    it('getCode() should return 1', () => {
+      assert.equal(this.audit.getCode(), 1);
+    });
+
+    it('get() should have 3 low', () => {
+      let data = JSON.parse(this.audit.get());
+
+      assert.equal(data.metadata.info, 0);
+      assert.equal(data.metadata.low, 2);
       assert.equal(data.metadata.moderate, 0);
       assert.equal(data.metadata.high, 0);
       assert.equal(data.metadata.critical, 0);

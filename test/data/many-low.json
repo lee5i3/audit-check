@@ -21,7 +21,7 @@
       "reported_by": {
         "name": "Tom MacWright"
       },
-      "module_name": "uglify-js",
+      "module_name": "debug",
       "cves": [
         "CVE-2015-8857"
       ],
@@ -60,7 +60,7 @@
       "reported_by": {
         "name": "Tom MacWright"
       },
-      "module_name": "uglify-js",
+      "module_name": "ms",
       "cves": [
         "CVE-2015-8857"
       ],
