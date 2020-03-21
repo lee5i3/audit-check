@@ -1,18 +1,24 @@
 {
   "name": "audit-check",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "nyc --reporter=lcov ./node_modules/mocha/bin/mocha",
-    "coverage": "codecov"
+  "bugs": {
+    "url": "https://github.com/lee5i3/audit-check/issues"
   },
+  "homepage": "https://github.com/lee5i3/audit-check#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lee5i3/audit-check.git"
   },
+  "scripts": {
+    "test": "nyc --reporter=lcov ./node_modules/mocha/bin/mocha",
+    "pretest": "npm run lint",
+    "lint": "./node_modules/.bin/eslint .",
+    "coverage": "codecov"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Lee Hull",
   "license": "ISC",
   "dependencies": {
     "cli-table": "0.3.1",
@@ -20,16 +26,13 @@
     "commander": "5.0.0",
     "lodash": "4.17.15"
   },
-  "bugs": {
-    "url": "https://github.com/lee5i3/audit-check/issues"
-  },
-  "homepage": "https://github.com/lee5i3/audit-check#readme",
-  "bin": {
-    "audit-check": "./bin/index.js"
-  },
   "devDependencies": {
     "codecov": "3.6.5",
+    "eslint": "6.8.0",
     "mocha": "7.1.1",
     "nyc": "15.0.0"
+  },
+  "bin": {
+    "audit-check": "./bin/index.js"
   }
 }
