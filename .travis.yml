@@ -8,8 +8,8 @@ jobs:
     - stage: test
       name: "Unit Tests"
       script:
-        - npm run coverage
-      after_success: npm run codecov
+        - npm test
+      after_success: npm run coverage
     - script:
         - echo "other"
     - stage: deploy  
