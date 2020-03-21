@@ -10,8 +10,6 @@ jobs:
       script:
         - npm test
       after_success: npm run coverage
-    - script:
-        - echo "other"
     - stage: deploy  
       name: "Publish to NPM"
       if: branch = master
