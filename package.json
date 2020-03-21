@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=lcov ./node_modules/mocha/bin/mocha",
-    "coverage": "codecov"
+    "test": "nyc ./node_modules/mocha/bin/mocha",
+    "coverage": "nyc --reporter=lcov npm test",
+    "codecov": "codecov"
   },
   "repository": {
     "type": "git",
