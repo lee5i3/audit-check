@@ -36,16 +36,11 @@ child.on('close', (code) => {
     process.exit(1)
   }
 
-  let audit = new Audit(cmd.severity, cmd.ignoreDev, cmd.whitelist);
+  let audit = new Audit(cmd.severity, cmd.json, cmd.whitelist);
 
   audit.load(stdout);
 
-  if (cmd.json) {
-    console.log(audit.getJson());
-  } else {
-    console.log(audit.getTable());
-    console.log(audit.getSummary(true));
-  }
+  console.log(audit.get());
 
   process.exit(audit.getCode());
 });
