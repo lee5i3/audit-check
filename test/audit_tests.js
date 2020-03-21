@@ -9,7 +9,11 @@ describe('Audit Tests', function () {
   describe('data tests', function () {
     const testCases = [
       {
-        args: { file: 'none.json', severity: 'low', json: true },
+        args: { file: 'none.json', severity: 'low', json: false },
+        expected: { code: 0, result: 'No vulnerabilities.' }
+      },
+      {
+        args: { file: 'none.json', severity: 'low' },
         expected: { code: 0, metadata: { info: 0, low: 0, moderate: 0, high: 0, critical: 0 } }
       },
       {
@@ -92,6 +96,10 @@ describe('Audit Tests', function () {
         } else {
           it('get() should have a value', () => {
             const data = this.audit.get();
+
+            if (test.expected.result) {
+              assert.equal(data, test.expected.result);
+            }
 
             assert.ok(data);
           });

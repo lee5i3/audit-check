@@ -25,12 +25,7 @@ child.stderr.on('data', (chunk) => {
   stderr += chunk;
 });
 
-child.on('close', (code) => {
-  if (code == 0) {
-    console.log('No vulnerabilities found.');
-    process.exit(code);
-  }
-
+child.on('close', () => {
   if (stderr.length > 0) {
     console.error(stderr);
     process.exit(1);
