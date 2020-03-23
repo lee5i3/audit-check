@@ -3,6 +3,8 @@
 const args = require('../lib/args.js');
 const Audit = require('../lib/audit.js');
 
+const fs = require('fs');
+
 const { spawn } = require('child_process');
 
 const cmd = args();
@@ -34,8 +36,14 @@ child.on('close', () => {
   let audit = new Audit(cmd.severity, cmd.json, cmd.whitelist);
 
   audit.load(stdout);
+  
+  let result = audit.get();
 
-  console.log(audit.get());
+  if (cmd.output) {
+    fs.writeFileSync(cmd.output, result);
+  }
+
+  console.log(result);
 
   process.exit(audit.getCode());
 });
