@@ -18,6 +18,7 @@ npm install -g audit-check
 | ```severity``` | Severity to ignore, will filter from the result and return the correct exit code | ```String```  | ```info```  |
 | ```json``` | Weither to return a JSON or Table | ```Boolean```  | ```false```  |
 | ```ignore-dev``` | Weither to ignore dev-dependencies  | ```Boolean```  | ```false``` |
+| ```output``` | Path to save output to  | ```String```  |  |
 | ```whitelist``` | List of module names to ignore, comma-separated | ```String``` | |
 
 ### Examples
