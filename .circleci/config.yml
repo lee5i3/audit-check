@@ -93,6 +93,11 @@ workflows:
       - test:
           requires:
             - sonarscanner
+      
+      - hold:
+          type: approval
+          requires: 
+            - test
 
       - publish:
           requires:
