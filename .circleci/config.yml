@@ -67,14 +67,12 @@ jobs:
           command: npm publish
 workflows:
   version: 2
-  analysis:
+  test-publish:
     jobs:
       - sonarscanner
-  test:
-    jobs:
-      - run-tests
-  publish:
-    jobs:
+      - run-tests:
+          requires:
+            - build
       - publish:
           filters:
             branches:
