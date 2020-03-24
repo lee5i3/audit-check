@@ -16,7 +16,6 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run: npm install
@@ -94,15 +93,11 @@ workflows:
           requires:
             - sonarscanner
       
-      - hold:
-          type: approval
-          requires: 
-            - test
-
       - publish:
           requires:
             - test
           filters:
+            tags:
+              only: /.*/
             branches:
-              only:
-                - master
+              ignore: /.*/
