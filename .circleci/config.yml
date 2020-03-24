@@ -72,7 +72,7 @@ workflows:
       - sonarscanner
       - run-tests:
           requires:
-            - build
+            - sonarscanner
       - publish:
           requires:
             - run-tests
