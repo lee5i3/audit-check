@@ -1,18 +1,62 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.9.1
+
 jobs:
-  test:
-    executor:
-      name: node/default
+  run-tests:
+    <<: *defaults
     steps:
       - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+      
+      - run:
+          name: Run tests
+          command: npm test
+
+      - run:
+          name: Submit code coverage
+          command: npm run coverage
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - node/with-cache:
           steps:
             - run: npm install
-            - run: npm test
-            - run: npm run coverage
+      - run:
+          name: Publish package
+          command: npm publish
 workflows:
     test:
       jobs:
-        - test
+        - run-tests
+        - deploy:
+            requires:
+              - run-tests
+            filters:
+              branches:
+                only:
+                  - master
