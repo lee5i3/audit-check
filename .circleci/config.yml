@@ -81,18 +81,19 @@ workflows:
     jobs:
       - checkout
 
-      - sonarscanner:
-          context: SonarCloud
-          requires:
-            - checkout
       - lint:
           requires:
             - checkout
 
       - test:
           requires:
-            - sonarscanner
-      
+            - checkout
+
+      - sonarscanner:
+          context: SonarCloud
+          requires:
+            - test
+
       - publish:
           requires:
             - test
