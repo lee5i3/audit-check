@@ -35,7 +35,7 @@ jobs:
           root: ~/repo
           paths: .
 
-  deploy:
+  publish:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -51,10 +51,10 @@ jobs:
           command: npm publish
 workflows:
   version: 2
-  test:
+  test_and_publish:
     jobs:
       - run-tests
-      - deploy:
+      - publish:
           requires:
             - run-tests
           filters:
