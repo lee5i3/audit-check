@@ -51,13 +51,13 @@ jobs:
           command: npm publish
 workflows:
   version: 2
-    test:
-      jobs:
-        - run-tests
-        - deploy:
-            requires:
-              - run-tests
-            filters:
-              branches:
-                only:
-                  - master
+  test:
+    jobs:
+      - run-tests
+      - deploy:
+          requires:
+            - run-tests
+          filters:
+            branches:
+              only:
+                - master
