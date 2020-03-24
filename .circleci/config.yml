@@ -69,7 +69,10 @@ workflows:
   version: 2
   test-publish:
     jobs:
-      - sonarscanner
+      - checkout
+      - sonarscanner:
+          requires:
+            - checkout
       - run-tests:
           requires:
             - sonarscanner
