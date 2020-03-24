@@ -93,10 +93,11 @@ workflows:
           context: SonarCloud
           requires:
             - test
+            - lint
 
       - publish:
           requires:
-            - test
+            - sonarscanner
           filters:
             tags:
               only: /.*/
