@@ -1,9 +1,12 @@
-version: 2
+version: 2.1
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:8.9.1
+    - image: circleci/node:lts
 
 jobs:
   checkout:
@@ -16,6 +19,8 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      - run: npm install          
+
       - save_cache:
           paths:
             - node_modules
@@ -27,30 +32,36 @@ jobs:
 
   sonarscanner:
     <<: *defaults
-    docker:
-      - image: sonarsource/sonar-scanner-cli
     steps:
       - attach_workspace:
           at: ~/repo
-      - run:
-          name: Run sonarscanner
-          command: echo "test"
 
-  run-tests:
+      - sonarcloud/scan
+
+
+  lint:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
-
-      - run: npm install
-      
+     
       - run:
-          name: Run tests
-          command: npm test
+          name: Run eslint
+          command: npm run lint
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+     
+      - run:
+          name: Run tests w/ coverage
+          command: npm test:coverage
 
       - run:
           name: Submit code coverage
-          command: npm run coverage
+          command: npm run send-coverage
 
   publish:
     <<: *defaults
@@ -65,20 +76,27 @@ jobs:
       - run:
           name: Publish package
           command: npm publish
+          
 workflows:
-  version: 2
   test-publish:
     jobs:
       - checkout
+
       - sonarscanner:
+          context: SonarCloud
           requires:
             - checkout
-      - run-tests:
+      - lint:
+          requires:
+            - checkout
+
+      - test:
           requires:
             - sonarscanner
+
       - publish:
           requires:
-            - run-tests
+            - test
           filters:
             branches:
               only:

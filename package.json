@@ -12,10 +12,10 @@
     "url": "git+https://github.com/lee5i3/audit-check.git"
   },
   "scripts": {
-    "test": "nyc --reporter=lcov ./node_modules/mocha/bin/mocha",
-    "pretest": "npm run lint",
+    "test": "./node_modules/mocha/bin/mocha",
     "lint": "./node_modules/.bin/eslint .",
-    "coverage": "codecov"
+    "test:coverage": "nyc --reporter=lcov npm test",
+    "send-coverage": "codecov"
   },
   "keywords": [],
   "author": "Lee Hull",
