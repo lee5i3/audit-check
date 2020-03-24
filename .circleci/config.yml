@@ -57,7 +57,7 @@ jobs:
      
       - run:
           name: Run tests w/ coverage
-          command: npm test:coverage
+          command: npm run test:coverage
 
       - run:
           name: Submit code coverage
