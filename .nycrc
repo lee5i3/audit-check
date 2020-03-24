@@ -1,5 +1,10 @@
 {
   "all": true,
-  "include": ["lib/**", "bin/**"],
-  "exclude": ["test/**"]
+  "include": [
+    "lib/**"
+  ],
+  "exclude": [
+    "bin/**",
+    "test/**"
+  ]
 }

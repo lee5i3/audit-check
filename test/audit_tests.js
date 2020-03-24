@@ -67,6 +67,10 @@ describe('Audit Tests', function () {
       {
         args: { file: 'no-critical.json', severity: 'critical', json: true },
         expected: { code: 0, metadata: { info: 0, low: 0, moderate: 0, high: 0, critical: 0 } }
+      },
+      {
+        args: { file: 'failure.json', severity: 'info', json: true },
+        expected: { code: 1, metadata: { info: 0, low: 0, moderate: 1, high: 1, critical: 0 } }
       }
     ];
 
