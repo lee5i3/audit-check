@@ -1,30 +1,24 @@
-version: 2
+version: 2.1
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:8.9.1
+    - image: circleci/node:lts
 
 jobs:
-  run-tests:
+  checkout:
     <<: *defaults
     steps:
       - checkout
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run: npm install
-      
-      - run:
-          name: Run tests
-          command: npm test
-
-      - run:
-          name: Submit code coverage
-          command: npm run coverage
 
       - save_cache:
           paths:
@@ -34,6 +28,39 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
+
+  sonarscanner:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - sonarcloud/scan
+
+
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+     
+      - run:
+          name: Run eslint
+          command: npm run lint
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+     
+      - run:
+          name: Run tests w/ coverage
+          command: npm run test:coverage
+
+      - run:
+          name: Submit code coverage
+          command: npm run send-coverage
 
   publish:
     <<: *defaults
@@ -48,15 +75,29 @@ jobs:
       - run:
           name: Publish package
           command: npm publish
+
 workflows:
-  version: 2
-  test_and_publish:
+  test-publish:
     jobs:
-      - run-tests
+      - checkout
+
+      - sonarscanner:
+          context: SonarCloud
+          requires:
+            - checkout
+      - lint:
+          requires:
+            - checkout
+
+      - test:
+          requires:
+            - sonarscanner
+      
       - publish:
           requires:
-            - run-tests
+            - test
           filters:
+            tags:
+              only: /.*/
             branches:
-              only:
-                - master
+              ignore: /.*/
