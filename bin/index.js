@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const { spawn } = require('child_process');
 
-const cmd = args();
+const cmd = args(process.argv);
 
 var command_args = ['audit', '--json'];
 if (cmd.ignoreDev) {
