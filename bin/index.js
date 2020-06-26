@@ -14,7 +14,7 @@ if (cmd.ignoreDev) {
   command_args.push('--production');
 }
 
-const child = spawn('npm', command_args, { stdio: ['ignore', 'pipe'], detached: false });
+const child = spawn(process.platform == 'win32' ? 'npm.cmd' : 'npm', command_args, { stdio: ['ignore', 'pipe'], detached: false });
 
 var stdout = '';
 var stderr = '';
