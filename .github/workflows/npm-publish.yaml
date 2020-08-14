@@ -1,0 +1,29 @@
+name: npm-publish
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - v*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # Setup .npmrc file to publish to npm
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    
+    - name: Build package
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - run: npm publish
+      if: {{ github.ref == 'ref/head/v*' }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
