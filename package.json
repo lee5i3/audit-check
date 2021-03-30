@@ -27,7 +27,7 @@
     "colors": "1.4.0",
     "commander": "5.0.0",
     "lodash": "4.17.21",
-    "snyk": "^1.316.1"
+    "snyk": "^1.425.4"
   },
   "devDependencies": {
     "codecov": "3.7.1",
