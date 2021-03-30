@@ -26,14 +26,14 @@
     "cli-table": "0.3.1",
     "colors": "1.4.0",
     "commander": "5.0.0",
-    "snyk": "^1.465.0",
     "lodash": "4.17.21"
   },
   "devDependencies": {
     "codecov": "3.7.1",
     "eslint": "6.8.0",
     "mocha": "7.1.1",
-    "nyc": "15.0.0"
+    "nyc": "15.0.0",
+    "snyk": "1.465.0"
   },
   "bin": {
     "audit-check": "./bin/index.js"
